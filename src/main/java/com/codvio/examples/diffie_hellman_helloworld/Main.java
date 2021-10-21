@@ -29,8 +29,6 @@ public class Main {
 		alice.generateCommonSecretKey();
 		bob.generateCommonSecretKey();
 		
-		//System.out.println("Llave privada " + alice.generateCommonSecretKey() + "-------");
-		
 		// 5. Alice encrypt message using the secret key and sends to Bob.
 		alice.encryptAndSendMessage("Bob! Guess Who I am", bob);
 		
