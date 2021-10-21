@@ -15,17 +15,22 @@ public class Main {
 		alice.generateKeys();
 		bob.generateKeys();
 		
+<<<<<<< HEAD
 		//System.out.println( "Llave pública obtenida para Alice: ---> " + alice.getPublicKey() + "\n-------------" );
 		//System.out.println( "Llave pública obtenida para Bob: ---> " + bob.getPublicKey() + "\n-------------" );
+=======
+		System.out.println( "Llave pÃºblica obtenida para Alice: ---> " + alice.getPublicKey() + "\n-------------" );
+		System.out.println( "Llave pÃºblica obtenida para Bob: ---> " + bob.getPublicKey() + "\n-------------" );
+>>>>>>> 61611406f19ea0d5f5fd43a6d871fe0ec92ce05f
 		
 		// 3. Alice and Bob exchange public keys with each other.
 		alice.receivePublicKeyFrom(bob);
 		bob.receivePublicKeyFrom(alice);
 		
 		// 4.
-        // Alice generates common secret key via using her private key and Bob's public key.
-        // Bob generates common secret key via using his private key and Alice's public key.
-        // Both secret keys are equal without TRANSFERRING. This is the magic of Diffie-Helman algorithm.
+		// Alice generates common secret key via using her private key and Bob's public key.
+		// Bob generates common secret key via using his private key and Alice's public key.
+		// Both secret keys are equal without TRANSFERRING. This is the magic of Diffie-Helman algorithm.
 		alice.generateCommonSecretKey();
 		bob.generateCommonSecretKey();
 		
