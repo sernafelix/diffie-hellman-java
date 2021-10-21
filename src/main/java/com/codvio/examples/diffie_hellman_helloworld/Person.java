@@ -145,7 +145,7 @@ public class Person {
 			LOG.log(Level.SEVERE, e.getMessage(), e);
 		}
 		
-		System.out.println("Llave generada: " + encoder.encodeToString(key.getEncoded()) + "\n-------");
+		//System.out.println("Llave generada: " + encoder.encodeToString(key.getEncoded()) + "\n-------");
 	}
 
 }
