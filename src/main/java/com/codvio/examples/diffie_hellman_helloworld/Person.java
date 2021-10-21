@@ -58,6 +58,9 @@ public class Person {
 			
 			privateKey = keyPair.getPrivate();
 			publicKey = keyPair.getPublic();
+			
+			/*System.out.println("Llave privada en generateKeys(): " + privateKey + "\n---------\nFin de llave privada");
+			System.out.println("Llave pública en generateKeys(): " + privateKey + "\n---------\nFin de llave pública");*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
