@@ -13,8 +13,6 @@ import java.util.logging.Logger;
 import javax.crypto.Cipher;
 import javax.crypto.KeyAgreement;
 import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.DESKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class Person {
@@ -104,8 +102,6 @@ public class Person {
 	
 	public void whisperTheSecretMessage() {
 		System.out.println(secretMessage);
-		//System.out.println( "Llave pública: " + this.getPublicKey() );
-		//System.out.println( "Llave privada en Método Whisper: " + secretKey );
 	}
 	
 	private byte[] shortenSecretKey(final byte[] longKey) {
