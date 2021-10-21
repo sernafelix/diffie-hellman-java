@@ -1,9 +1,14 @@
 package main.java.com.codvio.examples.diffie_hellman_helloworld;
 
+import java.io.FileWriter;
+import java.security.Key;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyAgreement;
@@ -19,6 +24,8 @@ public class Person {
 	private PublicKey receivedPublicKey;
 	private byte[] secretKey;
 	private String secretMessage;
+	
+	private static final Logger LOG = Logger.getLogger(Person.class.getName());
 	
 	public void encryptAndSendMessage(final String message, final Person person) {
 		try {
@@ -59,8 +66,12 @@ public class Person {
 			privateKey = keyPair.getPrivate();
 			publicKey = keyPair.getPublic();
 			
-			/*System.out.println("Llave privada en generateKeys(): " + privateKey + "\n---------\nFin de llave privada");
-			System.out.println("Llave pública en generateKeys(): " + privateKey + "\n---------\nFin de llave pública");*/
+			saveKey(publicKey, "publicKey_dh.key", "public key dh");
+			LOG.info( String.format("Public Key Format: %s", publicKey.getFormat() ));
+			
+			saveKey(privateKey, "privateKey_dh.key", "private key dh");
+			LOG.info( String.format("Private Key Format: %s", privateKey.getFormat() ));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -114,6 +125,23 @@ public class Person {
 		}
 		
 		return null;
+	}
+	
+	private static void saveKey(Key key, String fileName, String header) {
+		Base64.Encoder encoder = Base64.getEncoder();
+		final String FORMAT = "----%s %s----";
+		
+		try (FileWriter out = new FileWriter(fileName)) {
+			out.write( String.format(FORMAT, "BEGIN", header.toUpperCase() ));
+			out.write("\n");
+			
+			out.write( encoder.encodeToString(key.getEncoded()) );
+			out.write("\n");
+			
+			out.write( String.format(FORMAT, "END", header.toUpperCase()) );
+		} catch (Exception e) {
+			LOG.log(Level.SEVERE, e.getMessage(), e);
+		}
 	}
 
 }
