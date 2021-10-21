@@ -2,10 +2,13 @@ package main.java.com.codvio.examples.diffie_hellman_helloworld;
 
 import java.io.FileWriter;
 import java.security.Key;
+import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.spec.KeySpec;
 import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +17,8 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyAgreement;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+
+// = "kPl6/5NllHE=".getBytes()
 
 public class Person {
 	
@@ -26,6 +31,7 @@ public class Person {
 	private static final Logger LOG = Logger.getLogger(Person.class.getName());
 	
 	public void encryptAndSendMessage(final String message, final Person person) {
+		
 		try {
 			final SecretKey keySpec = new SecretKeySpec(secretKey, "DES");
 			final Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
