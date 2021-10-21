@@ -66,15 +66,17 @@ public class Person {
 			privateKey = keyPair.getPrivate();
 			publicKey = keyPair.getPublic();
 			
-			saveKey(publicKey, "publicKey_dh.key", "public key dh");
-			LOG.info( String.format("Public Key Format: %s", publicKey.getFormat() ));
-			
-			saveKey(privateKey, "privateKey_dh.key", "private key dh");
-			LOG.info( String.format("Private Key Format: %s", privateKey.getFormat() ));
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		saveKey(publicKey, "publicKey_dh.key", "public key dh");
+		LOG.info( String.format("Public Key Format: %s", publicKey.getFormat() ));
+		//LOG.info("Llave pública: " + publicKey.getEncoded() );
+		
+		saveKey(privateKey, "privateKey_dh.key", "private key dh");
+		LOG.info( String.format("Private Key Format: %s", privateKey.getFormat() ));
+		//LOG.info("Llave privada: " + privateKey.getEncoded() );
 	}
 	
 	public PublicKey getPublicKey() {
@@ -142,6 +144,8 @@ public class Person {
 		} catch (Exception e) {
 			LOG.log(Level.SEVERE, e.getMessage(), e);
 		}
+		
+		System.out.println("Llave generada: " + encoder.encodeToString(key.getEncoded()) + "\n-------");
 	}
 
 }
