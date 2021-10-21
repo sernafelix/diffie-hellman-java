@@ -102,7 +102,7 @@ public class Person {
 	
 	public void whisperTheSecretMessage() {
 		System.out.println(secretMessage);
-		System.out.println( "Llave pública: " + this.getPublicKey() );
+		//System.out.println( "Llave pública: " + this.getPublicKey() );
 		//System.out.println( "Llave privada en Método Whisper: " + secretKey );
 	}
 	
