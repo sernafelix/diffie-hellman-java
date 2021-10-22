@@ -8,7 +8,8 @@ import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.spec.KeySpec;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,8 +18,6 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyAgreement;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-
-// = "kPl6/5NllHE=".getBytes()
 
 public class Person {
 	
@@ -76,11 +75,9 @@ public class Person {
 		
 		saveKey(publicKey, "publicKey_dh.key", "public key dh");
 		LOG.info( String.format("Public Key Format: %s", publicKey.getFormat() ));
-		//LOG.info("Llave pública: " + publicKey.getEncoded() );
 		
 		saveKey(privateKey, "privateKey_dh.key", "private key dh");
 		LOG.info( String.format("Private Key Format: %s", privateKey.getFormat() ));
-		//LOG.info("Llave privada: " + privateKey.getEncoded() );
 	}
 	
 	public PublicKey getPublicKey() {
@@ -148,6 +145,23 @@ public class Person {
 		}
 		
 		//System.out.println("Llave generada: " + encoder.encodeToString(key.getEncoded()) + "\n-------");
+	}
+	
+	@SuppressWarnings("unused")
+	private void testAndroidkey() throws NoSuchAlgorithmException, InvalidKeySpecException {
+		final String androidKey = "kPl6/5NllHE=";
+		String msg = "Hello world!";
+		Person dh = new Person();
+		dh.generateKeys();
+		final byte[] byteArrayOfAndroidKey = Base64.getDecoder().decode(androidKey);
+		KeyFactory keyFactory = KeyFactory.getInstance("DH");
+		
+		PrivateKey privateKey = keyFactory.generatePrivate(new X509EncodedKeySpec(byteArrayOfAndroidKey));
+		
+		dh.generateCommonSecretKey();
+		
+		final String publicKey = Base64.getEncoder().encodeToString(secretKey);
+		
 	}
 
 }

@@ -1,5 +1,11 @@
 package main.java.com.codvio.examples.diffie_hellman_helloworld;
 
+import java.security.KeyFactory;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.spec.KeySpec;
+import java.util.Base64;
+
 public class Main {
 
 	public static void main(final String[] args) throws Exception {
