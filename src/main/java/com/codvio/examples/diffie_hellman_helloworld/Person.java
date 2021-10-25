@@ -62,7 +62,7 @@ public class Person {
 	
 	public void generateKeys() {
 		
-		final byte[] androidKey = "kPl6/5NllHE=".getBytes();
+		String androidKey = "kPl6/5NllHE=";
 		
 		try {
 			final KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("DH");
@@ -140,7 +140,7 @@ public class Person {
 			out.write( String.format(FORMAT, "BEGIN", header.toUpperCase() ));
 			out.write("\n");
 			
-			out.write( encoder.encodeToString(key.getEncoded()) );
+			out.write( encoder.encodeToString( key.getEncoded()) );
 			out.write("\n");
 			
 			out.write( String.format(FORMAT, "END", header.toUpperCase()) );
