@@ -48,6 +48,7 @@ public class Person {
 	public void generateCommonSecretKey() {
 		try {
 			final KeyAgreement keyAgreement = KeyAgreement.getInstance("DH");
+			
 			keyAgreement.init(privateKey);
 			keyAgreement.doPhase(receivedPublicKey, true);
 			
@@ -60,13 +61,16 @@ public class Person {
 	}
 	
 	public void generateKeys() {
+		
+		final byte[] androidKey = "kPl6/5NllHE=".getBytes();
+		
 		try {
 			final KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("DH");
 			keyPairGenerator.initialize(1024);
 			
 			final KeyPair keyPair = keyPairGenerator.generateKeyPair();
 			
-			privateKey = keyPair.getPrivate();
+			privateKey = keyPair.getPrivate(new );
 			publicKey = keyPair.getPublic();
 			
 		} catch (Exception e) {
