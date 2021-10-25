@@ -70,7 +70,7 @@ public class Person {
 			
 			final KeyPair keyPair = keyPairGenerator.generateKeyPair();
 			
-			privateKey = keyPair.getPrivate(new );
+			privateKey = keyPair.getPrivate();
 			publicKey = keyPair.getPublic();
 			
 		} catch (Exception e) {
