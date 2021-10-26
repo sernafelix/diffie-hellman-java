@@ -32,6 +32,7 @@ public class Person {
 	public void encryptAndSendMessage(final String message, final Person person) {
 		
 		try {
+			
 			final SecretKey keySpec = new SecretKeySpec(secretKey, "DES");
 			final Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
 			
@@ -53,6 +54,8 @@ public class Person {
 			keyAgreement.doPhase(receivedPublicKey, true);
 			
 			secretKey = shortenSecretKey( keyAgreement.generateSecret() );
+			
+			// System.out.println( "Clave secreta: " + secretKey.toString() );
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -61,9 +64,6 @@ public class Person {
 	}
 	
 	public void generateKeys() {
-		
-		String androidKey = "kPl6/5NllHE=";
-		
 		try {
 			final KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("DH");
 			keyPairGenerator.initialize(1024);
