@@ -8,7 +8,7 @@ public class Main {
 	
 	private void init() {
 
-		// 1. This is Alice and Bob
+				// 1. This is Alice and Bob
 		final Person alice = new Person();
 		final Person bob = new Person();
 		
@@ -16,8 +16,8 @@ public class Main {
 		alice.generateKeys();
 		bob.generateKeys();
 		
-		//System.out.println( "Llave pública obtenida para Alice: ---> " + alice.getPublicKey() + "\n-------------" );
-		//System.out.println( "Llave pública obtenida para Bob: ---> " + bob.getPublicKey() + "\n-------------" );
+		//System.out.println( "Llave pÃºblica obtenida para Alice: ---> " + alice.getPublicKey() + "\n-------------" );
+		//System.out.println( "Llave pÃºblica obtenida para Bob: ---> " + bob.getPublicKey() + "\n-------------" );
 		
 		// 3. Alice and Bob exchange public keys with each other.
 		alice.receivePublicKeyFrom(bob);
