@@ -21,6 +21,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class Person {
 	
+	
 	private PrivateKey privateKey;
 	private PublicKey publicKey;
 	private PublicKey receivedPublicKey;
@@ -60,7 +61,7 @@ public class Person {
 			e.printStackTrace();
 		}
 		
-		//System.out.println( "Llave privada en Método GenerateCommonSecretKey: " + secretKey );
+		//System.out.println( "Llave privada en MÃ©todo GenerateCommonSecretKey: " + secretKey );
 	}
 	
 	public void generateKeys() {
@@ -167,5 +168,5 @@ public class Person {
 		final String publicKey = Base64.getEncoder().encodeToString(secretKey);
 		
 	}
-
+	
 }
